@@ -15,6 +15,7 @@ class SubCategory(models.Model):
 
 class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory, verbose_name='Подкатегория', on_delete=models.CASCADE)
     img = models.TextField('Ссылка на фото')
     name = models.CharField('Название', max_length=100)
     desc = models.TextField('Описание')
