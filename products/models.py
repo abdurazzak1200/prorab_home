@@ -4,6 +4,14 @@ class Category(models.Model):
     name = models.CharField('Название', max_length=50)
     slug = models.SlugField('slug', max_length=60)
 
+    def __str__(self):
+        return self.name
+
+class SubCategory(models.Model):
+    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
+    name = models.CharField('Название', max_length=50)
+    slug = models.SlugField('slug', max_length=60)
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
@@ -14,3 +22,6 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField('Активность', default=True)
+
+    def __str__(self):
+        return self.name
