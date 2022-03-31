@@ -13,3 +13,4 @@ def get_subcategory(request):
 class HomeView(ListView):
     template_name = 'index.html'
     model = Product
+
