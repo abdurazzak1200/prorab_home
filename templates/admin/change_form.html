@@ -1,9 +1,20 @@
 {% extends "admin/change_form.html" %} {% load static %} {% block extrahead %}
 {{ block.super }}
+<style>
+	.field-img {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.field-bg {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function () {
-    // inspect html to check id of category select dropdown.
     $(document).on("change", "select#id_category", function () {
     $.getJSON("/getSubcategory/", { id: $(this).val() }, function (j) {
     var options = '<option value="">---------</option>';
@@ -17,13 +28,16 @@ $(function () {
     });
     });
 $(function () {
-    // inspect html to check id of category select dropdown.
     $(document).on("change", "input#id_img", function () {
-    console.log(1333)
     let image_url = $(this).val()
-    console.log(image_url)
+    $(".div-bg").remove()
+    $(".field-img").append('<div class="div-bg"><img src="'+image_url+'" width=400></div>');
+    });
+    });$(function () {
+$(document).on("change", "input#id_bg", function () {
+    let image_url = $(this).val()
     $(".div-img").remove()
-    $(".field-img").append('<div class="div-img"><img src="'+image_url+'" width=400></div>');
+    $(".field-bg").append('<div class="div-img"><img src="'+image_url+'" width=400></div>');
     });
     });
 </script>

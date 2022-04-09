@@ -1,8 +1,9 @@
 from django.conf.urls import url
-from . import views
+from .views import *
 from django.urls import path
-app_name = 'product'
+
 urlpatterns = [
-    path('getSubcategory/', views.get_subcategory),
-    path('', views.HomeView.as_view(), name='index')
+    path('getSubcategory/', get_subcategory),
+    path('', HomeView.as_view(), name='index'),
+    path('about/', AboutView.as_view(), name='about')
 ]

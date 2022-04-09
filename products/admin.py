@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, SubCategory, Slider
+from .models import Product, Category, SubCategory, Slider, About
 # Register your models here.
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
@@ -27,3 +27,8 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('category__name', 'subcategory__name', 'name')
     list_display = ['name', 'category', 'subcategory', 'price', 'is_active']
     list_editable = ['price', 'is_active']
+
+
+@admin.register(About)
+class AboutAdmin(admin.ModelAdmin):
+    list_display = ('bg', 'img', 'title', 'text')

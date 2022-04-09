@@ -201,4 +201,11 @@
         $('.video-mo-01').css('opacity','0');
     });
 
+
+    $('.accordion').accordion({
+	heightStyle: 'content',
+	header: '.accordion-header'
+    });
+
+
 })(jQuery);

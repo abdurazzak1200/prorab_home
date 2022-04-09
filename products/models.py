@@ -1,9 +1,17 @@
 from django.db import models
 
+
 class Slider(models.Model):
     desc = models.CharField('Описание', max_length=30)
     title = models.CharField('Название', max_length=20)
     img = models.URLField('Ссылка на фото', max_length=256)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Слайдер'
+        verbose_name_plural = 'Слайдеры'
 
 
 class Category(models.Model):
@@ -13,6 +21,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Категорию'
+        verbose_name_plural = 'Категории'
+
+
 class SubCategory(models.Model):
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
     name = models.CharField('Название', max_length=50)
@@ -20,6 +33,10 @@ class SubCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Подкатегорию'
+        verbose_name_plural = 'Подкатегории'
 
 
 class Product(models.Model):
@@ -40,3 +57,10 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
         ordering = ['-created']
+
+
+class About(models.Model):
+    bg = models.URLField('Шапка')
+    img = models.URLField('Фото 720х866')
+    title = models.CharField('Заголовок', max_length=30)
+    text = models.TextField('Введите текст')

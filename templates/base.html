@@ -36,38 +36,49 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <!--===============================================================================================-->
 </head>
+<style>
+	.accordion__all-prod {
+		border: 1px solid #ddd;
+		background: #eee;
+		margin-bottom: 10px;
+	}
+	.accordion__all-prod a {
+		margin: 7px 10px;
+		font-weight: bold;
+		font-size: 19px;
+
+	}
+	.accordion-button::after {
+		display:none;
+	}
+	.accordion-button {
+		padding: 7px 5px;
+	}
+	.accordion .ui-accordion-header {
+	margin: 0 0 10px 0;
+	padding: 10px;
+	border: 1px solid #ddd;
+	background: #eee;
+	cursor: pointer;
+	outline: none;
+	}
+	.accordion .ui-accordion-content {
+		margin: 0 0 10px 0;
+		padding: 10px;
+		border: 1px solid #ddd;
+		background: #fff;
+	}
+	accordion ul {
+		list-style-type: disc;
+	}
+
+</style>
 <body class="animsition">
 
 	<!-- Header -->
 	<header class="header1">
 		<!-- Header desktop -->
 		<div class="container-menu-header">
-			<div class="topbar">
-				<div class="topbar-social">
-					<a href="#" class="topbar-social-item fa fa-facebook"></a>
-					<a href="#" class="topbar-social-item fa fa-instagram"></a>
-					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
-				</div>
-
-				<span class="topbar-child1">
-					Free shipping for standard order over $100
-				</span>
-
-				<div class="topbar-child2">
-					<span class="topbar-email">
-						fashe@example.com
-					</span>
-
-					<div class="topbar-language rs1-select2">
-						<select class="selection-1" name="time">
-							<option>USD</option>
-							<option>EUR</option>
-						</select>
-					</div>
-				</div>
-			</div>
 
 			<div class="wrap_header">
 				<!-- Logo -->
@@ -81,23 +92,10 @@
 						<ul class="main_menu">
 							<li>
 								<a href="index.html">Home</a>
-								<ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
-									<li><a href="home-02.html">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
-							</li>
-
-							<li class="sale-noti">
-								<a href="product.html">Sale</a>
-							</li>
-
-							<li>
-								<a href="cart.html">Features</a>
+								<a href="{% url 'shop_list' %}">Shop</a>
 							</li>
 
 							<li>
@@ -105,7 +103,7 @@
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="{% url 'about' %}">About</a>
 							</li>
 
 							<li>
@@ -345,32 +343,20 @@
 
 					<li class="item-menu-mobile">
 						<a href="index.html">Home</a>
-						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
-						</ul>
-						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+
 					</li>
 
 					<li class="item-menu-mobile">
 						<a href="product.html">Shop</a>
 					</li>
 
-					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
-					</li>
 
 					<li class="item-menu-mobile">
 						<a href="blog.html">Blog</a>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="about.html">About</a>
+						<a href="{% url 'about' %}">About</a>
 					</li>
 
 					<li class="item-menu-mobile">
@@ -418,29 +404,13 @@
 				</h4>
 
 				<ul>
+					{% for category in categoryes %}
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Men
+							{{category.name}}
 						</a>
 					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Women
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Dresses
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Sunglasses
-						</a>
-					</li>
+					{% endfor %}
 				</ul>
 			</div>
 
@@ -476,37 +446,6 @@
 				</ul>
 			</div>
 
-			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-				<h4 class="s-text12 p-b-30">
-					Help
-				</h4>
-
-				<ul>
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Track Order
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Returns
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Shipping
-						</a>
-					</li>
-
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							FAQs
-						</a>
-					</li>
-				</ul>
-			</div>
 
 			<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
 				<h4 class="s-text12 p-b-30">
@@ -531,25 +470,7 @@
 		</div>
 
 		<div class="t-center p-l-15 p-r-15">
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/paypal.png' %}" alt="IMG-PAYPAL">
-			</a>
 
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/visa.png' %}" alt="IMG-VISA">
-			</a>
-
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/mastercard.png' %}" alt="IMG-MASTERCARD">
-			</a>
-
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/express.png' %}" alt="IMG-EXPRESS">
-			</a>
-
-			<a href="#">
-				<img class="h-size2" src="{% static 'images/icons/discover.png' %}" alt="IMG-DISCOVER">
-			</a>
 
 			<div class="t-center s-text8 p-t-20">
 				Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -570,9 +491,10 @@
 	<div id="dropDownSelect1"></div>
 
 
-
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	scr
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
 <!--===============================================================================================-->
@@ -588,7 +510,7 @@
 	</script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{% static 'vendor/slick/slick.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/slick-custom.js"></script>
+	<script type="text/javascript" src="{% static 'js/slick-custom.js' %}"></script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
