@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from products.models import Product, Category, SubCategory
 
 class ShopView(ListView, View):
@@ -28,4 +28,7 @@ class ShopView(ListView, View):
             return queryset
         return queryset
 
-
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'detail.html'
+    context_object_name = 'product'
