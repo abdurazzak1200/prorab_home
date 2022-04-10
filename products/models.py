@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 
@@ -63,4 +64,4 @@ class About(models.Model):
     bg = models.URLField('Шапка')
     img = models.URLField('Фото 720х866')
     title = models.CharField('Заголовок', max_length=30)
-    text = models.TextField('Введите текст')
+    text = RichTextField()

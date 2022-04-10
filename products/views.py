@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from .models import SubCategory, Category, Product, Slider, About
 from django.http import HttpResponse
@@ -25,3 +25,6 @@ class AboutView(ListView,View):
     template_name = 'about.html'
     model = About
     context_object_name = 'about'
+
+class ContactView(TemplateView):
+    template_name = 'contact.html'
