@@ -7,6 +7,7 @@ class ShopView(ListView, View):
     template_name = 'shop.html'
     model = Product
     context_object_name = 'products'
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = self.model.objects.filter(is_active=True)
@@ -14,6 +15,11 @@ class ShopView(ListView, View):
 
         category_slug = self.kwargs.get('category_slug')
         subcategory_slug = self.kwargs.get('subcategory_slug')
+        if search_query:
+            queryset = self.model.objects.filter(name__icontains=self.request.GET.get('search', ''),
+                                                 is_active=True
+                                                 )
+            return queryset
         if category_slug:
             category = get_object_or_404(Category, slug=category_slug)
             queryset = self.model.objects.filter(
@@ -32,3 +38,11 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'detail.html'
     context_object_name = 'product'
+    # print('*********************************************')
+
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        tags = self.object.tags
+        context['related'] = Product.objects.filter(tags=tags)
+        print(context)
+        return context

@@ -1,302 +1,174 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Главная{% endblock %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+{% endblock %}
+
 {% block content %}
-<section class="slide1">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				{% for slider in sliders %}
-				<div class="item-slick1 item1-slick1" style="background-image: url('{{slider.img}}');">
-					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+<section style="margin-top:30px" class="slide1">
+	<div class="wrap-slick1">
+		<div class="slick1">
+			{% for slider in sliders %}
+			<div class="item-slick1 item1-slick1" style="background-image: url('{{slider.img}}');">
+				<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
 							{{slider.desc}}
 						</span>
-
-						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-							{{slider.title}}
-						</h2>
-
-
-					</div>
+					<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+						{{slider.title}}
+					</h2>
 				</div>
-				{% endfor %}
-
 			</div>
+			{% endfor %}
 		</div>
-	</section>
+	</div>
+</section>
 
-<section class="banner bgwhite p-t-40 p-b-40">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-02.jpg" alt="IMG-BENNER">
+<section class="categories-index" >
+	<div class="container">
+		<div class="row">
+			{% for category in categoryes %}
+			<div class="categories-card">
+				<a href="{% url 'category_list' category.slug %}" class="categories-link">
+					<img style="width: 100%; height: 200px;" class="categories-img" src="{{category.img}}" alt="{{category.img}}">
+				</a>
+				<p class="categories-descr">
+					{{category.name}}
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
 
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Dresses
-							</a>
-						</div>
-					</div>
-
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-05.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Sunglasses
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-03.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Watches
-							</a>
-						</div>
-					</div>
-
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-07.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Footerwear
-							</a>
+<section class="carousel">
+	<div class="container">
+		<h3 class="title">Наши клиенты</h3>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div class="card">
+						<div class="img-wrapper">
+							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
 						</div>
 					</div>
 				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					<!-- block1 -->
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="images/banner-04.jpg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							<!-- Button -->
-							<a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Bags
-							</a>
+				<div class="swiper-slide">
+					<div class="card">
+						<div class="img-wrapper">
+							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
 						</div>
 					</div>
-
-					<!-- block2 -->
-					<div class="block2 wrap-pic-w pos-relative m-b-30">
-						<img src="images/icons/bg-01.jpg" alt="IMG">
-
-						<div class="block2-content sizefull ab-t-l flex-col-c-m">
-							<h4 class="m-text4 t-center w-size3 p-b-8">
-								Sign up & get 20% off
-							</h4>
-
-							<p class="t-center w-size4">
-								Be the frist to know about the latest fashion news and get exclu-sive offers
-							</p>
-
-							<div class="w-size2 p-t-25">
-								<!-- Button -->
-								<a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-									Sign Up
-								</a>
-							</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card">
+						<div class="img-wrapper">
+							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card">
+						<div class="img-wrapper">
+							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card">
+						<div class="img-wrapper">
+							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="card">
+						<div class="img-wrapper">
+							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 
-	<!-- New Product -->
+</section>
 
-
-	<!-- Banner2 -->
-	<section class="banner2 bg5 p-t-55 p-b-55">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
-					<div class="hov-img-zoom pos-relative">
-						<img src="images/banner-08.jpg" alt="IMG-BANNER">
-
-						<div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
-							<span class="m-text9 p-t-45 fs-20-sm">
-								The Beauty
-							</span>
-
-							<h3 class="l-text1 fs-35-sm">
-								Lookbook
-							</h3>
-
-							<a href="#" class="s-text4 hov2 p-t-20 ">
-								View Collection
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
-					<div class="bgwhite hov-img-zoom pos-relative p-b-20per-ssm">
-						<img src="images/shop-item-09.jpg" alt="IMG-BANNER">
-
-						<div class="ab-t-l sizefull flex-col-c-b p-l-15 p-r-15 p-b-20">
-							<div class="t-center">
-								<a href="product-detail.html" class="dis-block s-text3 p-b-5">
-									Gafas sol Hawkers one
-								</a>
-
-								<span class="block2-oldprice m-text7 p-r-5">
-									$29.50
-								</span>
-
-								<span class="block2-newprice m-text8">
-									$15.90
-								</span>
-							</div>
-
-							<div class="flex-c-m p-t-44 p-t-30-xl">
-								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 days">
-										69
-									</span>
-
-									<span class="s-text5">
-										days
-									</span>
-								</div>
-
-								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 hours">
-										04
-									</span>
-
-									<span class="s-text5">
-										hrs
-									</span>
-								</div>
-
-								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 minutes">
-										32
-									</span>
-
-									<span class="s-text5">
-										mins
-									</span>
-								</div>
-
-								<div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 seconds">
-										05
-									</span>
-
-									<span class="s-text5">
-										secs
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+<section class="pay">
+	<div class="container">
+		<div class="row">
+			<div class="pay-card">
+				Доставка
+			</div>
+			<div class="pay-card">
+				Прайс лист
+			</div>
+			<div class="pay-card">
+				Без выходных
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
+
+<section class="my_map">
+	<div style="display: flex; justify-content: center; height: 50vh" class="container">
+		<div id="map" style="width: 70%; height: 100%"></div>
+	</div>
 
 
-	<!-- Blog -->
-	<section class="blog bgwhite p-t-94 p-b-65">
-		<div class="container">
-			<div class="sec-title p-b-52">
-				<h3 class="m-text5 t-center">
-					Our Blog
-				</h3>
-			</div>
+	</div>
+</section>
 
-			<div class="row">
-				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-					<!-- Block3 -->
-					<div class="block3">
-						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-							<img src="images/blog-01.jpg" alt="IMG-BLOG">
-						</a>
+<footer class="footer">
+	<div class="container">
+		<nav class="footer-nav">
+			<ul class="footer-list">
+				<li class="footer-item">
+					<a href="#" class="footer-link">
+						stroydvor312@mail.ru
+					</a>
+				</li>
+				<li class="footer-item">
+					<a href="#" class="footer-link">
+						+996 555 57 03 03
+					</a>
+				</li>
+				<li class="footer-item">
+					<a href="#" class="footer-link">
+						+996 551 57 03 03
+					</a>
+				</li>
+				<li class="footer-item">
+					с 8:30 до 18:00 Без выходных
+				</li>
+			</ul>
+		</nav>
+	</div>
+</footer>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=12b3858e-4965-4f3a-b661-e1a1d9b82281&lang=ru_RU" type="text/javascript">
+</script>
+<script type="text/javascript">
+	// Функция ymaps.ready() будет вызвана, когда
+	// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+	ymaps.ready(init);
+	function init(){
+		// Создание карты.
+		var myMap = new ymaps.Map("map", {
+			center: [42.86610996417681,74.56579453139308],
+			zoom: 15
+		});
+		var myPlacemark = new ymaps.Placemark([42.86485263764848,74.5650133380175], {
+			balloonContentHeader: 'Prorab_home',
+			balloonContentBody: 'Строй магазин',
+			balloonContentFooter: 'Мы ждем вас!',
+		});
 
-						<div class="block3-txt p-t-14">
-							<h4 class="p-b-7">
-								<a href="blog-detail.html" class="m-text11">
-									Black Friday Guide: Best Sales & Discount Codes
-								</a>
-							</h4>
+		myMap.geoObjects.add(myPlacemark);
 
-							<span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-							<span class="s-text6">on</span> <span class="s-text7">July 22, 2017</span>
-
-							<p class="s-text8 p-t-16">
-								Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-					<!-- Block3 -->
-					<div class="block3">
-						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-							<img src="images/blog-02.jpg" alt="IMG-BLOG">
-						</a>
-
-						<div class="block3-txt p-t-14">
-							<h4 class="p-b-7">
-								<a href="blog-detail.html" class="m-text11">
-									The White Sneakers Nearly Every Fashion Girls Own
-								</a>
-							</h4>
-
-							<span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-							<span class="s-text6">on</span> <span class="s-text7">July 18, 2017</span>
-
-							<p class="s-text8 p-t-16">
-								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-					<!-- Block3 -->
-					<div class="block3">
-						<a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-							<img src="images/blog-03.jpg" alt="IMG-BLOG">
-						</a>
-
-						<div class="block3-txt p-t-14">
-							<h4 class="p-b-7">
-								<a href="blog-detail.html" class="m-text11">
-									New York SS 2018 Street Style: Annina Mislin
-								</a>
-							</h4>
-
-							<span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-							<span class="s-text6">on</span> <span class="s-text7">July 2, 2017</span>
-
-							<p class="s-text8 p-t-16">
-								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+		myPlacemark.balloon.open();
+	}
+</script>
 
 {% endblock %}

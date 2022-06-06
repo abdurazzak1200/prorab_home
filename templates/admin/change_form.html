@@ -27,18 +27,47 @@ $(function () {
     });
     });
     });
+
 $(function () {
-    $(document).on("change", "input#id_img", function () {
-    let image_url = $(this).val()
+    $(document).on("change", "select#id_subcategory", function () {
+    $.getJSON("/get/", { id: $(this).val() }, function (j) {
+    
+    if (j.liter === 'False') {
+        $(".field-liter").remove()
+    }
+    if (j.diameter === 'False') {
+        $(".field-diameter").remove()
+    }
+    if (j.meter === 'False') {
+        $(".field-meter").remove()
+    }
+    if (j.size === 'False') {
+        $(".field-size").remove()
+    }
+    if (j.kg === 'False') {
+        $(".field-kg").remove()
+    }
+    
+    });
+    });
+    });
+
+
+
+$(document).on("change", "input[type=file]", function (event) {
+
+    let filePath = URL.createObjectURL(event.target.files[0])
+    // $("img").fadeIn("field-img").attr('src',filePath);
+    // let filePath = $(this).val();
+    // console.log(filePath);
     $(".div-bg").remove()
-    $(".field-img").append('<div class="div-bg"><img src="'+image_url+'" width=400></div>');
-    });
-    });$(function () {
-$(document).on("change", "input#id_bg", function () {
-    let image_url = $(this).val()
+    $(".field-img").append('<div class="div-bg"><img src="'+filePath+'" width=400></div>').attr('src',filePath);
+})
+
+$(document).on("change", "input#[type=file]", function () {
+    let filePath = URL.createObjectURL(event.target.files[0])
     $(".div-img").remove()
-    $(".field-bg").append('<div class="div-img"><img src="'+image_url+'" width=400></div>');
-    });
+    $(".field-bg").append('<div class="div-img"><img src="'+filePath+'" width=400></div>').attr('src',filePath);
     });
 </script>
 {% endblock %}

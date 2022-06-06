@@ -20,13 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+=7_hk&6vdtl!xz49ax3+9_6mf+9zo_lzvg5pfc)n&&jnpd+m6'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", default='django-insecure-+=7_hk&6vdtl!xz49ax3+9_6mf+9zo_lzvg5pfc)n&&jnpd+m6')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", default=True)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -39,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'shop',
+    'contact',
 
     'ckeditor',
-
+    'phonenumber_field',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -82,11 +83,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'prorab',
-        'USER': 'prorab_user',
-        'PASSWORD': 'prorab',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.getenv("POSTGRES_DB", default='prorab'),
+        'USER': os.getenv("POSTGRES_PASSWORD", default='prorab_user'),
+        'PASSWORD': os.getenv("POSTGRES_USER", default='prorab'),
+        'HOST': os.getenv("POSTGRES_HOST", default='127.0.0.1'),
+        'PORT': os.getenv("POSTGRES_PORT", default='5432'),
     }
 }
 
@@ -133,6 +134,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     '/Users/test/Desktop/orders/prorab_home/prorab/static/',
 )
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

@@ -28,7 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'subcategory', 'price', 'is_active']
     list_editable = ['price', 'is_active']
 
-
-@admin.register(About)
-class AboutAdmin(admin.ModelAdmin):
-    list_display = ('bg', 'img', 'title', 'text')
+#
+# @admin.register(About)
+# class AboutAdmin(admin.ModelAdmin):
+#     list_display = ('bg', 'img', 'title', 'text')

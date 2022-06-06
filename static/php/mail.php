@@ -1,23 +1,26 @@
-$name = trim($_POST['name']);
-$email = trim($_POST['email']);
-$phone = trim($_POST['phone']);
-$message = trim($_POST['message']);
+<?php
 
-// указываем адрес отправителя, можно указать адрес на домене Вашего сайта
-$fromMail = 'admin@yousite.ru';
-$fromName = 'yousite.ru Форма';
+if(isset($_POST['submit'])){
+$to = "toloev.abi99@gmail.com";; // Здесь нужно написать e-mail, куда будут приходить письма
+$from = $_POST['email']; // this is the sender's Email address
+$first_name = $_POST['first_name'];
+$subject = "Форма отправки сообщений с сайта";
+$message = $first_name . " оставил сообщение:" . "\n\n" . $_POST['phone'];
 
-// Сюда введите Ваш email
-$emailTo = 'toloev.abi99@gmail.com';
-$subject = 'Форма обратной связи на php';
-$subject = '=?utf-8?b?'. base64_encode($subject) .'?=';
-$headers = "Content-type: text/plain; charset=\"utf-8\"\r\n";
-$headers .= "From: ". $fromName ." <". $fromMail ."> \r\n";
+$headers = "From:" . $from;
+$headers2 = "From:" . $to;
 
-// тело письма
-$body = "Получено письмо с сайта testsite.ru \n Имя: $name\nТелефон: $phone \n E-mail: $email\nСообщение: $message";
+mail($to,$subject,$message,$headers);
+// mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender - Отключено!
+echo "Сообщение отправлено. Спасибо Вам " . $first_name . ", мы скоро свяжемся с Вами.";
+echo "<br /><br /><a href='https://epicblog.net'>Вернуться на сайт.</a>";
 
-// сообщение будет отправлено в случае, если поле с номером телефона не пустое
-if (strlen($phone) > 0) {
-    $mail = mail($emailTo, $subject, $body, $headers, '-f'. $fromMail );
 }
+
+?>
+
+<!--Переадресация на главную страницу сайта, через 3 секунды-->
+<script language="JavaScript" type="text/javascript">
+function changeurl(){eval(self.location="https://epicblog.net/index.php");}
+window.setTimeout("changeurl();",3000);
+</script>
