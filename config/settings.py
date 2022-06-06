@@ -84,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv("POSTGRES_DB", default='prorab'),
-        'USER': os.getenv("POSTGRES_USER", default='prorab'),
-        'PASSWORD': os.getenv("POSTGRES_PASSWORD", default='prorab_user'),
+        'USER': os.getenv("POSTGRES_USER", default='prorab_user'),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD", default='prorab12)'),
         'HOST': os.getenv("POSTGRES_HOST", default='127.0.0.1'),
         'PORT': os.getenv("POSTGRES_PORT", default='5432'),
     }
@@ -127,15 +127,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+STATIC_URL = "/static/"
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static"),
-#     '/Users/test/Desktop/orders/prorab_home/prorab/static/',
-# )
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_ROOT = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+
 MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
