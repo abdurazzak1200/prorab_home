@@ -9,8 +9,8 @@ services:
       dockerfile: dockerfiles/Dockerfile
     command: run
     volumes:
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
+      - ./staticfiles:/app/staticfiles
+      - ./media:/app/media
     env_file:
       - .env
     ports:
