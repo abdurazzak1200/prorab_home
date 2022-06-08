@@ -9,6 +9,7 @@ services:
       dockerfile: dockerfiles/Dockerfile
     command: run
     volumes:
+      - ./static:/app/static
       - ./staticfiles:/app/staticfiles
       - ./media:/app/media
     env_file:
