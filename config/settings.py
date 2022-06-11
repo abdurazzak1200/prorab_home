@@ -129,10 +129,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-if DEBUG:
+if DEBUG == 'True':
     STATICFILES_DIRS = [
         BASE_DIR / "static",
-        '/Users/test/Desktop/orders/prorab_home/prorab_home/static',
     ]
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
