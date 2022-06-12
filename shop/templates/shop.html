@@ -23,7 +23,7 @@
                             <ul>
                                 {% for subcategory in category.subcategory_set.all %}
                                 <li>
-                                    <a href="{% url 'subcategory_list' subcategory.slug %}">{{subcategory.name}}</a>
+                                    <a href="{% url 'subcategory_list' category.slug subcategory.slug %}">{{subcategory.name}}</a>
                                 </li>
                                 {% endfor %}
                             </ul>

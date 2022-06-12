@@ -113,11 +113,12 @@
 </style>
 <body class="animsition">
 
-<a href="{% url 'index' %}" class="logo-title">
-	<h1 style="font-size: 20px; font-weight: 600; color: #000">PRORABHOME</h1>
-</a>
+
 <!-- Header -->
 <header class="header1">
+	<a href="{% url 'index' %}" class="logo-title">
+		<h1 style="font-size: 20px; font-weight: 600; color: #000">PRORABHOME</h1>
+	</a>
 	<!-- Header desktop -->
 	<div class="container-menu-header">
 
@@ -272,9 +273,14 @@
 		loop: true,
 		centeredSlides: true,
 		slidesPerView: 'auto',
-		initialSlide: 3,
+		initialSlide: 1,
 		slideToClickedSlide: true,
+		autoplay: {
+			delay: 1000,
+			disableOnInteraction: false,
+		},
 	})
+
 </script>
 
 </body>

@@ -9,29 +9,30 @@ class ShopView(ListView, View):
     context_object_name = 'products'
     paginate_by = 10
 
-    def get_queryset(self):
-        queryset = self.model.objects.filter(is_active=True)
-        search_query = self.request.GET.get('search', '')
 
-        category_slug = self.kwargs.get('category_slug')
-        subcategory_slug = self.kwargs.get('subcategory_slug')
-        if search_query:
-            queryset = self.model.objects.filter(name__icontains=self.request.GET.get('search', ''),
-                                                 is_active=True
-                                                 )
-            return queryset
-        if category_slug:
-            category = get_object_or_404(Category, slug=category_slug)
-            queryset = self.model.objects.filter(
-                is_active=True,
-                category=category)
-            return queryset
+
+    def get_queryset(self, **kwargs):
+        search_query = self.request.GET.get('search', '')
+        category_slug = self.kwargs.get("category_slug")
+        subcategory_slug = self.kwargs.get("subcategory_slug")
         if subcategory_slug:
             subcategory = get_object_or_404(SubCategory, slug=subcategory_slug)
-            queryset = self.model.objects.filter(
-                is_active=True,
-                subcategory=subcategory)
+            queryset = self.model.objects.filter(is_active=True, subcategory=subcategory)
             return queryset
+        elif category_slug:
+            category = get_object_or_404(Category, slug=category_slug)
+            queryset = self.model.objects.filter(is_active=True, category=category)
+            return queryset
+
+        elif search_query:
+            if search_query:
+                queryset = self.model.objects.filter(name__icontains=self.request.GET.get('search', ''),
+                                                     is_active=True
+                                                     )
+                return queryset
+            else:
+                return 'asd'
+        queryset = self.model.objects.filter(is_active=True)
         return queryset
 
 class ProductDetailView(DetailView):

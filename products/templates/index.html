@@ -47,49 +47,16 @@
 	<div class="container">
 		<h3 class="title">Наши клиенты</h3>
 		<div class="swiper-container">
-			<div class="swiper-wrapper">
+			<div style="display:flex; align-items:center" class="swiper-wrapper">
+				{% for client in clients %}
 				<div class="swiper-slide">
 					<div class="card">
 						<div class="img-wrapper">
-							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
+							<img   src="{{client.img.url}}" alt="random image">
 						</div>
 					</div>
 				</div>
-				<div class="swiper-slide">
-					<div class="card">
-						<div class="img-wrapper">
-							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="card">
-						<div class="img-wrapper">
-							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="card">
-						<div class="img-wrapper">
-							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="card">
-						<div class="img-wrapper">
-							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="card">
-						<div class="img-wrapper">
-							<img src="https://stroydvor.kg/catalog/view/theme/default/image/categories/11_metaloprokat.png" alt="random image">
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
