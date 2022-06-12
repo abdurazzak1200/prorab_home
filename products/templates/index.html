@@ -91,26 +91,21 @@
 <footer class="footer">
 	<div class="container">
 		<nav class="footer-nav">
+			{% for info in infos %}
 			<ul class="footer-list">
 				<li class="footer-item">
-					<a href="#" class="footer-link">
-						stroydvor312@mail.ru
+					<a href="tel:{{info.phone}}" class="footer-link">
+						{{info.phone}}
 					</a>
 				</li>
 				<li class="footer-item">
-					<a href="#" class="footer-link">
-						+996 555 57 03 03
-					</a>
+					{{info.address}}
 				</li>
 				<li class="footer-item">
-					<a href="#" class="footer-link">
-						+996 551 57 03 03
-					</a>
-				</li>
-				<li class="footer-item">
-					с 8:30 до 18:00 Без выходных
+					{{info.working_hours}}
 				</li>
 			</ul>
+			{% endfor %}
 		</nav>
 	</div>
 </footer>

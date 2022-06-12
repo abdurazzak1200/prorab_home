@@ -15,8 +15,9 @@
                 </div>
                 <div class="p-r-20 p-r-0-lg">
                     {% for info in infos %}
-                    <a class="m-text26 p-b-36 p-t-15" href="tel:0777777777">Тел: {{info.phone}}</a>
+                    <a class="m-text26 p-b-36 p-t-15" href="tel:{{info.phone}}">Тел: {{info.phone}}</a>
                     <p class="m-text26 p-b-36 p-t-15">Адрес: {{info.address}} </p>
+                    <p class="m-text26 p-b-36 p-t-15">Режим работы: {{info.working_hours}} </p>
                     {% endfor %}
                 </div>
             </div>

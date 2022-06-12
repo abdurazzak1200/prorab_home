@@ -65,6 +65,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'contact.get_contact.get_info',
                 'products.get_category.get_category',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',

@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Info(models.Model):
     phone = PhoneNumberField(verbose_name='Номер телефона')
     address = models.CharField(max_length=250, verbose_name='Адрес')
+    working_hours = models.CharField('Режим работы', max_length=40)
 
     class Meta:
         verbose_name = 'Контактную информацию'
