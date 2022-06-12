@@ -23,7 +23,7 @@
                             <ul>
                                 {% for subcategory in category.subcategory_set.all %}
                                 <li>
-                                    <div class="accordion__all-prod"><a href="{% url 'category_list' category.slug %}">Все товары: {{category.name}} </a></div>
+                                    <div><a href="{% url 'category_list' category.slug %}">Все товары: {{category.name}} </a></div>
                                     <a href="{% url 'subcategory_list' category.slug subcategory.slug %}">{{subcategory.name}}</a>
                                 </li>
                                 {% endfor %}
