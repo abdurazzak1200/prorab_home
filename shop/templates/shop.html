@@ -23,6 +23,7 @@
                             <ul>
                                 {% for subcategory in category.subcategory_set.all %}
                                 <li>
+                                    <div class="accordion__all-prod"><a href="{% url 'category_list' category.slug %}">Все товары: {{category.name}} </a></div>
                                     <a href="{% url 'subcategory_list' category.slug subcategory.slug %}">{{subcategory.name}}</a>
                                 </li>
                                 {% endfor %}
@@ -73,7 +74,7 @@
             <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                 <!--  -->
                 <div class="flex-sb-m flex-w p-b-35">
-                    <h2 style="font-weight:bold">Продукты</h2>
+                    <h2 style="font-weight:bold">Товары</h2>
                     <!--                    <div class="flex-w">-->
                     <!--                        <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">-->
                     <!--                            <select class="selection-2" name="sorting">-->
