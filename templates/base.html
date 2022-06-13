@@ -205,9 +205,11 @@
 
 
 <!-- Back to top -->
+{% for info in infos%}
 <div class="whatsapp-block">
-	<a href="https://wa.me/+996999003305"><i class="fab fa-whatsapp"></i></a>
+	<a href="https://wa.me/{{info.phone}}"><i class="fab fa-whatsapp"></i></a>
 </div>
+{% endfor %}
 
 <div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">
